@@ -5,12 +5,32 @@
   </head>
   <body>
     <div>
-
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
     <script>
       (function () {
+        let data;
+        function rand(arr) {
+          return Math.floor(Math.random() * arr.length);
+        }
+        function work() {
+          if (!data) {
+            console.log('No data');
+            return;
+          }
+          document.querySelector('ul').children.forEach((li, i) => {
+            li.innerText = rand(data[i]);
+          });
+        }
         fetch('./data.json').then(response => {
-          console.log(response.json());
+          data = JSON.parse(response.json());
+          work();
+        }).catch(e => {
+          window.alert(e.message || e || 'Unknown error.');
         })
       }());
     </script>
