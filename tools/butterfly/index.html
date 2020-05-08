@@ -27,7 +27,7 @@
           });
         }
         fetch('./data.json').then(response => {
-          data = JSON.parse(response.json());
+          data = JSON.parse(JSON.stringify(response.json()));
           work();
         }).catch(e => {
           window.alert(e.message || e || 'Unknown error.');
