@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 15px;
+}
+.map {
+  position: relative;
+  height: 100vh;
+  background: #def;
+  box-shadow: 0 0 0 0.5em #369 inset, 0 0 1em 0 #000 inset;
+}
+.hero {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform translate(-50%, -50%);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  background: #369;
+}
