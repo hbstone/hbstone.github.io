@@ -17,21 +17,16 @@
         function rand(arr) {
           return Math.floor(Math.random() * arr.length);
         }
-        function work() {
-          if (!data) {
-            console.log('No data');
-            return;
-          }
-          document.querySelector('ul').children.forEach((li, i) => {
-            li.innerText = rand(data[i]);
-          });
-        }
-        fetch('./data.json').then(response => {
-          data = JSON.parse(JSON.stringify(response.json()));
-          work();
-        }).catch(e => {
-          window.alert(e.message || e || 'Unknown error.');
-        })
+        fetch('./data.json')
+          .then(response => response.json())
+          .then(json => JSON.parse(JSON.stringify(json)))
+          .then(data => {
+            [...document.querySelectorAll('li')].forEach((li, i) => {
+              li.innerText = data[i][rand(data[i])];
+            });
+          }).catch(e => {
+            window.alert(e.message || e || 'Unknown error.');
+          })
       }());
     </script>
   </body>
